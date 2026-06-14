@@ -74,3 +74,13 @@ where  full_name like 'Tanvir%' or full_name ilike '%Haque';
 select booking_id, user_id, match_id, coalesce(payment_status, 'Action Required') 
 from bookings 
 where payment_status is null;
+
+-- 4. Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+select booking_id, full_name, fixture, total_cost from Bookings
+inner join Users using(user_id) 
+inner join Matches using(match_id);
+
+
+-- 5. Display a comprehensive list of all users and their booking IDs, ensuring that fans who have never bought a ticket are still listed.
+select user_id, full_name, booking_id from Users
+left join Bookings using(user_id);
