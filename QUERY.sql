@@ -91,7 +91,7 @@ select booking_id, match_id, total_cost from Bookings
 where total_cost > (
   select avg(total_cost) 
   from Bookings
-)
+);
 
 -- 7. Retrieve the top 2 most expensive matches sorted by base ticket price, skipping the absolute highest premium match.
 select match_id, fixture, base_ticket_price
